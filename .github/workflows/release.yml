@@ -52,12 +52,12 @@ jobs:
         run: echo ::set-env name=IMAGE_TAG::$(echo ${GITHUB_REF:11})
       - uses: actions/checkout@v2
       - name: Login GitHub Registry
-        run: docker login docker.pkg.github.com -u traPtitech -p ${{ secrets.GH_TOKEN }}
+        run: docker login docker.pkg.github.com -u laminne -p ${{ secrets.GH_TOKEN }}
       - name: Build Image
-        run: docker build -t docker.pkg.github.com/traptitech/traq_s-ui/${IMAGE_NAME}:${IMAGE_TAG} .
+        run: docker build -t docker.pkg.github.com/laminne/traq_s-ui/${IMAGE_NAME}:${IMAGE_TAG} .
       - name: Push image to GitHub Registry
-        run: docker push docker.pkg.github.com/traptitech/traq_s-ui/${IMAGE_NAME}:${IMAGE_TAG}
+        run: docker push docker.pkg.github.com/laminne/traq_s-ui/${IMAGE_NAME}:${IMAGE_TAG}
       - name: Push image to GitHub Registry (latest)
         run: |
-          docker tag docker.pkg.github.com/traptitech/traq_s-ui/${IMAGE_NAME}:$IMAGE_TAG docker.pkg.github.com/traptitech/traq_s-ui/${IMAGE_NAME}:latest
-          docker push docker.pkg.github.com/traptitech/traq_s-ui/${IMAGE_NAME}:latest
+          docker tag docker.pkg.github.com/laminne/traq_s-ui/${IMAGE_NAME}:$IMAGE_TAG docker.pkg.github.com/laminne/traq_s-ui/${IMAGE_NAME}:latest
+          docker push docker.pkg.github.com/laminne/traq_s-ui/${IMAGE_NAME}:latest
