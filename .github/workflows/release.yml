@@ -28,7 +28,7 @@ jobs:
         id: create_release
         uses: actions/create-release@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         with:
           tag_name: ${{ github.ref }}
           release_name: ${{ github.ref }}
@@ -38,7 +38,7 @@ jobs:
         id: upload-release-asset
         uses: actions/upload-release-asset@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: ./dist.tar.gz
@@ -52,7 +52,7 @@ jobs:
         run: echo ::set-env name=IMAGE_TAG::$(echo ${GITHUB_REF:11})
       - uses: actions/checkout@v2
       - name: Login GitHub Registry
-        run: docker login docker.pkg.github.com -u traPtitech -p ${{ secrets.GITHUB_TOKEN }}
+        run: docker login docker.pkg.github.com -u traPtitech -p ${{ secrets.GH_TOKEN }}
       - name: Build Image
         run: docker build -t docker.pkg.github.com/traptitech/traq_s-ui/${IMAGE_NAME}:${IMAGE_TAG} .
       - name: Push image to GitHub Registry

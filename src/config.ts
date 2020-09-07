@@ -17,7 +17,7 @@ export default {
    * skyway用設定
    */
   skyway: {
-    apiKey: '2a4e923e-2e16-4d3c-9a39-607c3f605f0a'
+    apiKey: '4d358906-1245-41cc-8171-7f6700b09cc5'
   },
   /**
    * 表示されるサービス
@@ -129,9 +129,9 @@ export default {
    * 内部用認証機構へのリダイレクト
    * 通常は`false`
    */
-  pipelineEnabled: true,
+  pipelineEnabled: false,
   /**
    * QRコード表示ボタンの有効化
    */
-  showQrCodeButton: true
+  showQrCodeButton: false
 } as const
